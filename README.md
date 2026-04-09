@@ -38,7 +38,7 @@
 
 | Item | Spec | Price |
 |------|------|-------|
-| NavePoint 15U Wall-Mount Rack | ~23.6" depth | ~$175 |
+| UniFi Toolless Mini Rack (U-Rack-6U-TL) | 6U · Open-frame · Toolless | $299 |
 | Cat6A 12-Port Patch Panel x2 | Split by floor/area | ~$90 |
 | Cable Management Bar x2 | 1U each | ~$30 |
 
@@ -54,7 +54,7 @@
 
 ---
 
-## 🗄️ Rack Layout (15U)
+## 🗄️ Rack Layout — UniFi Toolless Mini Rack (6U)
 
 ```
 ┌─────────────────────────────────────┐
@@ -225,7 +225,7 @@ No UniFi reconfiguration required. Pull the Verizon router, plug ONT into UDM Pr
 | Floor space (if tower UPS) | 18"D × 7"W × 9"H |
 | Working clearance in front | 18–24" |
 
-**Ventilation:** NavePoint rack includes 2 built-in fans. Total rack heat load ~93W — low enough that a louvered door or small gap provides sufficient passive airflow. No dedicated HVAC required.
+**Ventilation:** Open-frame design provides natural airflow. Total rack heat load ~93W — passive airflow is sufficient. No dedicated HVAC required.
 
 ---
 
@@ -260,7 +260,7 @@ Concepts practiced in this build:
 |------|--------|
 | UniFi gear | [store.ui.com](https://store.ui.com) |
 | Cat6A keystones & patch panels | [Monoprice](https://monoprice.com) / [Infinity Cable Products](https://infinitycableproducts.com) |
-| Rack enclosure | [NavePoint on Amazon](https://amazon.com) |
+| Rack enclosure | [UniFi Toolless Mini Rack](https://store.ui.com/us/en/category/accessories-rack-mount/products/toolless-mini-rack) |
 | DAC cable | Amazon (10Gtek / Cablelist) |
 
 ---
