@@ -38,7 +38,7 @@
 
 | Item | Spec | Price |
 |------|------|-------|
-| UniFi Toolless Mini Rack (U-Rack-6U-TL) | 6U · Open-frame · Toolless | $299 |
+| UniFi Toolless Mini Rack (U-Rack-6U-TL) x2 | 6U each · Stacked = 12U · Open-frame · Toolless | $598 |
 | Cat6A 12-Port Patch Panel x2 | Split by floor/area | ~$90 |
 | Cable Management Bar x2 | 1U each | ~$30 |
 
@@ -54,24 +54,27 @@
 
 ---
 
-## 🗄️ Rack Layout — UniFi Toolless Mini Rack (6U)
+## 🗄️ Rack Layout — 2× UniFi Toolless Mini Rack Stacked (12U)
 
 ```
-┌─────────────────────────────────────┐
+┌─────────────────────────────────────┐  ← Rack 1 (top) — 6U
 │  1U  │ UniFi Dream Machine Pro       │
 │  1U  │ UniFi USW-16-POE Switch       │
 │  1U  │ Patch Panel A (Floor 1 runs)  │
 │  1U  │ Patch Panel B (Floor 2 runs)  │
 │  1U  │ Cable Management Bar x2       │
+│  1U  │ FREE — reserved               │
+├──────┼───────────────────────────────┤  ← Rack 2 (bottom) — 6U
 │  2U  │ UniFi UPS 2U                  │
 │  2U  │ UniFi PDU Pro                 │
 │──────│───────────────────────────────│
-│  5U  │ FREE — Growth headroom        │
+│  2U  │ FREE — Growth headroom        │
 │      │ (NAS, cameras, expansion)     │
 └─────────────────────────────────────┘
 ```
 
-**Deepest device:** UDM Pro at 11.2" — rack must be at least 12" internal depth.  
+**Total:** 9U used · 3U free · 12U capacity across 2 stacked racks
+**Deepest device:** UDM Pro at 11.2" — rack must be at least 12" internal depth.
 **UPS note:** Tower form factor sits outside rack on floor/shelf.
 
 ---
