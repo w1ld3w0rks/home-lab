@@ -593,10 +593,34 @@
     <div style="margin-top: 8px;">
       <div class="section-label" style="margin-bottom: 6px;">VLANs Configured on UDM Pro</div>
       <div class="vlan-tags">
-        <span class="vlan-tag vlan-main">VLAN 10 — Your Network</span>
-        <span class="vlan-tag vlan-neighbor">VLAN 20 — Neighbor (Isolated)</span>
-        <span class="vlan-tag vlan-iot">VLAN 30 — IoT / Cameras</span>
+        <span class="vlan-tag vlan-main">VLAN 10 — Work (Trusted)</span>
+        <span class="vlan-tag" style="color:var(--purple); border-color:var(--purple); background:#0d0a1a;">VLAN 20 — Gaming (Performance)</span>
+        <span class="vlan-tag vlan-iot">VLAN 30 — IoT (Untrusted)</span>
+        <span class="vlan-tag" style="color:#fbbf24; border-color:#fbbf24; background:#1a1400;">Guest — Internet Only</span>
       </div>
+
+    <!-- SSID PLAN -->
+    <div style="margin-top: 8px;">
+      <div class="section-label" style="margin-bottom: 6px;">SSID Plan</div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap:6px;">
+        <div style="background:#001a2e; border:1px solid var(--accent); border-radius:6px; padding:8px 12px; font-family:'JetBrains Mono',monospace; font-size:0.65rem;">
+          <div style="color:var(--accent); font-weight:600;">📶 WiFi-Work</div>
+          <div style="color:var(--muted); margin-top:2px;">VLAN 10 · Full LAN access</div>
+        </div>
+        <div style="background:#0d0a1a; border:1px solid var(--purple); border-radius:6px; padding:8px 12px; font-family:'JetBrains Mono',monospace; font-size:0.65rem;">
+          <div style="color:var(--purple); font-weight:600;">📶 WiFi-Game</div>
+          <div style="color:var(--muted); margin-top:2px;">VLAN 20 · QoS priority</div>
+        </div>
+        <div style="background:#001a0a; border:1px solid var(--green); border-radius:6px; padding:8px 12px; font-family:'JetBrains Mono',monospace; font-size:0.65rem;">
+          <div style="color:var(--green); font-weight:600;">📶 WiFi-IoT</div>
+          <div style="color:var(--muted); margin-top:2px;">VLAN 30 · Isolated</div>
+        </div>
+        <div style="background:#1a1400; border:1px solid #fbbf24; border-radius:6px; padding:8px 12px; font-family:'JetBrains Mono',monospace; font-size:0.65rem;">
+          <div style="color:#fbbf24; font-weight:600;">📶 Guest WiFi</div>
+          <div style="color:var(--muted); margin-top:2px;">Internet only · No LAN</div>
+        </div>
+      </div>
+    </div>
     </div>
 
   </div>
@@ -617,19 +641,19 @@
         <div class="device-badge badge-ap" style="top:-6px; right:8px; font-size:0.55rem; padding:2px 6px; border-radius:4px; position:absolute; font-family:'JetBrains Mono',monospace; font-weight:600; text-transform:uppercase;">PoE</div>
         <div class="device-icon">📶</div>
         <div class="wireless-device-name">U6 Pro — Upstairs Loft</div>
-        <div class="wireless-device-sub conn-poe">TrueCable Cat 6A run · PoE+ powered · VLAN 10 + 20</div>
+        <div class="wireless-device-sub conn-poe">TrueCable Cat 6A run · PoE+ · VLAN 10/20/30 + Guest</div>
       </div>
       <div class="wireless-device">
         <div class="device-badge badge-ap" style="top:-6px; right:8px; font-size:0.55rem; padding:2px 6px; border-radius:4px; position:absolute; font-family:'JetBrains Mono',monospace; font-weight:600; text-transform:uppercase;">PoE</div>
         <div class="device-icon">📶</div>
         <div class="wireless-device-name">U6 Pro — Kitchen</div>
-        <div class="wireless-device-sub conn-poe">TrueCable Cat 6A run · PoE+ powered · VLAN 10 + 20</div>
+        <div class="wireless-device-sub conn-poe">TrueCable Cat 6A run · PoE+ · VLAN 10/20/30 + Guest</div>
       </div>
       <div class="wireless-device" style="border-color: #3a2a1a;">
         <div class="device-badge badge-ap" style="top:-6px; right:8px; font-size:0.55rem; padding:2px 6px; border-radius:4px; position:absolute; font-family:'JetBrains Mono',monospace; font-weight:600; text-transform:uppercase; color:var(--orange); border-color:var(--orange);">MESH</div>
         <div class="device-icon">📡</div>
         <div class="wireless-device-name">U6 Mesh Pro — Neighbor</div>
-        <div class="wireless-device-sub" style="color:var(--orange);">Wireless uplink · VLAN 20 only (isolated)</div>
+        <div class="wireless-device-sub" style="color:#fbbf24;">Wireless uplink · Guest WiFi (internet only)</div>
       </div>
     </div>
   </div>
@@ -659,7 +683,7 @@
       <div class="endpoint">
         <div class="endpoint-icon">🎮</div>
         <div class="endpoint-name">TV / Game System</div>
-        <div class="endpoint-conn conn-eth">TrueCable Cat 6A · Ethernet · VLAN 10</div>
+        <div class="endpoint-conn" style="color:var(--purple);">TrueCable Cat 6A · Ethernet · VLAN 20</div>
       </div>
       <div class="endpoint">
         <div class="endpoint-icon">💻</div>
@@ -673,15 +697,67 @@
   <div class="section">
     <div class="section-label">Wireless Clients</div>
     <div class="endpoints">
-      <div class="endpoint" style="border-color: #1a2a1a;">
-        <div class="endpoint-icon">📱</div>
-        <div class="endpoint-name">Your devices</div>
-        <div class="endpoint-conn" style="color:#fbbf24;">WiFi · VLAN 10</div>
+      <div class="endpoint" style="border-color: #1a2a3a;">
+        <div class="endpoint-icon">💻</div>
+        <div class="endpoint-name">Laptops / Phones</div>
+        <div class="endpoint-conn" style="color:var(--accent);">WiFi-Work · VLAN 10</div>
+      </div>
+      <div class="endpoint" style="border-color: #2d1a4a;">
+        <div class="endpoint-icon">🎮</div>
+        <div class="endpoint-name">PS5 / AppleTV</div>
+        <div class="endpoint-conn" style="color:var(--purple);">WiFi-Game · VLAN 20</div>
+      </div>
+      <div class="endpoint" style="border-color: #1a3a1a;">
+        <div class="endpoint-icon">🌡️</div>
+        <div class="endpoint-name">Thermostat / Doorbell</div>
+        <div class="endpoint-conn" style="color:var(--green);">WiFi-IoT · VLAN 30</div>
+      </div>
+      <div class="endpoint" style="border-color: #1a3a1a;">
+        <div class="endpoint-icon">🔊</div>
+        <div class="endpoint-name">Speakers / Smart TV</div>
+        <div class="endpoint-conn" style="color:var(--green);">WiFi-IoT · VLAN 30</div>
       </div>
       <div class="endpoint" style="border-color: #2a1a0a;">
         <div class="endpoint-icon">📱</div>
-        <div class="endpoint-name">Neighbor devices</div>
-        <div class="endpoint-conn" style="color:var(--orange);">WiFi · VLAN 20 · Isolated</div>
+        <div class="endpoint-name">Guest devices</div>
+        <div class="endpoint-conn" style="color:#fbbf24;">Guest WiFi · Internet only</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIREWALL RULES -->
+  <div class="section" style="border-color: var(--red);">
+    <div class="section-label" style="color:var(--red);">Firewall Rules</div>
+    <div style="display:flex; flex-direction:column; gap:4px;">
+      <div class="rack-unit" style="border-color:#3a0a0a;">
+        <span style="font-size:0.75rem; color:var(--red); min-width:20px;">✗</span>
+        <span class="rack-device-name">Block IoT → Work</span>
+        <span class="rack-conn" style="color:var(--muted);">VLAN 30 → VLAN 10 · Denied</span>
+      </div>
+      <div class="rack-unit" style="border-color:#0a2a0a;">
+        <span style="font-size:0.75rem; color:var(--green); min-width:20px;">✓</span>
+        <span class="rack-device-name">Allow Work → IoT</span>
+        <span class="rack-conn" style="color:var(--muted);">VLAN 10 → VLAN 30 · If needed</span>
+      </div>
+      <div class="rack-unit" style="border-color:#0a2a0a;">
+        <span style="font-size:0.75rem; color:var(--green); min-width:20px;">✓</span>
+        <span class="rack-device-name">Allow Gaming → Internet</span>
+        <span class="rack-conn" style="color:var(--muted);">VLAN 20 → WAN · Allowed</span>
+      </div>
+      <div class="rack-unit" style="border-color:#3a0a0a;">
+        <span style="font-size:0.75rem; color:var(--red); min-width:20px;">✗</span>
+        <span class="rack-device-name">Block IoT → LAN</span>
+        <span class="rack-conn" style="color:var(--muted);">VLAN 30 → Any LAN · Denied</span>
+      </div>
+      <div class="rack-unit" style="border-color:#0a2a0a;">
+        <span style="font-size:0.75rem; color:var(--green); min-width:20px;">✓</span>
+        <span class="rack-device-name">Allow All → DNS / NTP</span>
+        <span class="rack-conn" style="color:var(--muted);">Any → DNS/NTP · Allowed</span>
+      </div>
+      <div class="rack-unit" style="border-color:#001a2e;">
+        <span style="font-size:0.75rem; color:var(--accent); min-width:20px;">🔒</span>
+        <span class="rack-device-name">Admin Access</span>
+        <span class="rack-conn" style="color:var(--muted);">Work VLAN 10 only · Controller locked</span>
       </div>
     </div>
   </div>

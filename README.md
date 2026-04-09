@@ -82,9 +82,19 @@
 
 | VLAN | Name | Devices | Notes |
 |------|------|---------|-------|
-| VLAN 10 | Main | Personal devices, wired endpoints | Full access |
-| VLAN 20 | Neighbor | Neighbor's WiFi clients | Isolated — internet only |
-| VLAN 30 | IoT / Cameras | Security cameras, smart devices | Isolated from main |
+| VLAN 10 | Work (Trusted) | Laptops, phones, NAS/backups | Full access to printers & NAS |
+| VLAN 20 | Gaming (Performance) | PS5/console, AppleTV | QoS priority, lowest latency |
+| VLAN 30 | IoT (Untrusted) | Cameras, smart TV, thermostat, speakers, doorbell | No access to Work devices |
+| Guest | Guest WiFi | Visitor devices | Internet only, no LAN access |
+
+### SSID Plan
+
+| SSID | VLAN | Access |
+|------|------|--------|
+| WiFi-Work | VLAN 10 | Full LAN + trusted device access |
+| WiFi-Game | VLAN 20 | Internet + QoS prioritized |
+| WiFi-IoT | VLAN 30 | Internet only, isolated from LAN |
+| Guest WiFi | — | Internet only, no LAN access |
 
 ### Connection Map
 
@@ -120,6 +130,38 @@ Wired Drops:
 
 ---
 
+## 🔥 Firewall Rules
+
+| # | Rule | Source | Destination | Action |
+|---|------|--------|-------------|--------|
+| 1 | Block IoT → Work | VLAN 30 | VLAN 10 | ❌ Block |
+| 2 | Allow Work → IoT | VLAN 10 | VLAN 30 | ✅ Allow (if needed) |
+| 3 | Allow Gaming → Internet | VLAN 20 | WAN | ✅ Allow |
+| 4 | Block IoT → LAN | VLAN 30 | Any LAN | ❌ Block |
+| 5 | Allow All → DNS/NTP | Any | DNS/NTP | ✅ Allow |
+| 6 | Admin access | VLAN 10 | Controller/UI | ✅ Work VLAN only |
+
+---
+
+## 📋 Device Checklist
+
+| Device | VLAN | Network | Connection |
+|--------|------|---------|------------|
+| Laptop(s) | 10 | Work (Trusted) | WiFi-Work or wired |
+| Phone(s) | 10 | Work (Trusted) | WiFi-Work |
+| NAS / Backups | 10 | Work (Trusted) | Wired preferred |
+| PS5 / Console | 20 | Gaming (Performance) | WiFi-Game or wired |
+| AppleTV | 20 | Gaming (Performance) | WiFi-Game or wired |
+| UniFi G6 Dome — Cam 1 | 30 | IoT (Untrusted) | Wired PoE |
+| UniFi G6 Dome — Cam 2 | 30 | IoT (Untrusted) | Wired PoE |
+| Smart TV | 30 | IoT (Untrusted) | WiFi-IoT |
+| Thermostat | 30 | IoT (Untrusted) | WiFi-IoT |
+| Speakers | 30 | IoT (Untrusted) | WiFi-IoT |
+| Doorbell | 30 | IoT (Untrusted) | WiFi-IoT |
+| Guest devices | — | Guest WiFi | Internet only |
+
+---
+
 ## 🔌 Structured Cabling
 
 ### Spec
@@ -136,7 +178,7 @@ Wired Drops:
 | 2 | Kitchen | U6 Pro AP | 10 |
 | 3 | Camera location 1 | IP Camera | 30 |
 | 4 | Camera location 2 | IP Camera | 30 |
-| 5 | Living room | TV / Game system | 10 |
+| 5 | Living room | TV / Game system | 20 |
 
 > **Note:** U6 Mesh Pro (neighbor) uses wireless uplink — no cable run required.
 
